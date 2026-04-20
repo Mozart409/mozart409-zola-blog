@@ -1,5 +1,5 @@
 +++
-title = "Nixos Proxmox Homelab"
+title = "NixOS Proxmox Homelab"
 date = 2026-04-20
 +++
 
@@ -9,11 +9,22 @@ Just show me the [code](https://github.com/Mozart409/pve-nixos-homelab)
 
 ## Preamble
 
-How do I create / manage my vms in my homelab? I use opentofu with api access to my proxmox host. I create a new debian/fedora vm as I can supply my ssh key and activate ssh access. Then I convert this debian vm into a nixos vm via nixos-anywhere. The reason I have to do this step, as proxmox does not understand nixos and where to supply the ssh key and activate sshd. I usually deploy a minmal nixos config, basic tools curl, zsh, ss, nvim etc configure the disk via "disko" (as filesystem i mostly use btrfs but will switch to bcachefs sometime)
+How do I create / manage my vms in my homelab? I use opentofu with api access to my proxmox host. I create a new debian/fedora vm as I can supply my ssh key and activate ssh access. Then I convert this debian vm into a nixos vm via nixos-anywhere.
+
+The reason I have to do this step, as proxmox does not understand nixos (no cloud-init) and where to supply the ssh key to and activate sshd. I usually deploy a minimal NixOS config, basic tools curl, zsh, ss, nvim etc configure the disk via "disko" (as filesystem i mostly use btrfs but will switch to bcachefs sometime)
+
+## Prerequisites
+
+If you have NixOS / nix + flakes installed you could copy the flake.nix in my github repo and start from there if not you need the following tools:
+
+- opentofu
+- nixos-anywhere
+- colmena
+- agenix (optional for secret management) out of scope for this blog post
 
 ## Setup
 
-Nixos desktop -> OpenTofu -> Proxmox API-> VMs
+NixOS desktop -> OpenTofu -> Proxmox API-> VMs
 
 [Proxmox provider](https://github.com/bpg/terraform-provider-proxmox)
 
@@ -104,7 +115,7 @@ resource "proxmox_virtual_environment_vm" "database_vm" {
     # Either set static ip now
     ip_config {
       ipv4 {
-        address = "192.168.2.160/24"
+        address = "192.168.2.160/24" # if you know this ip is free
         gateway = "192.168.2.1"
       }
     }
@@ -131,10 +142,10 @@ resource "proxmox_virtual_environment_vm" "database_vm" {
 
 ```
 
-2. After the vm is deployed, run [nixos-anywhere](https://github.com/nix-community/nixos-anywhere) to install nixos via ssh, configure disks via [disko](https://github.com/nix-community/disko). This is my [basic config](https://github.com/Mozart409/pve-nixos-homelab/blob/main/modules/disko-config.nix). I usually choose a minimal config that I know succeedes, otherwise you have to delete the vm and deploy debian/fedora again, as your ssh key gets wiped during nixos installation. If the installation is successful your config must provide a ssh key to login and manage the vm.
+2. After the vm is deployed, run [nixos-anywhere](https://github.com/nix-community/nixos-anywhere) to install nixos via ssh, configure disks via [disko](https://github.com/nix-community/disko). This is my [basic config](https://github.com/Mozart409/pve-nixos-homelab/blob/main/modules/disko-config.nix). I usually choose a minimal config that I know succeeds, otherwise you have to delete the vm and deploy debian/fedora again, as your ssh key gets wiped during nixos installation. If the installation is successful your config must provide a ssh key to login and manage the vm.
 
 Nix config for [minimal host](https://github.com/Mozart409/pve-nixos-homelab/blob/main/hosts/minimal/configuration.nix)
-Deployment command to install nixos via ssh
+Deployment command to install NixOS via ssh
 `nixos-anywhere --flake .#minimal username@{{ip}}`
 
 3. Once i created a new minimal host I manage the lifecycle via [colmena](https://github.com/zhaofengli/colmena). Part of my colmenaHive
@@ -160,5 +171,19 @@ database = {
 4. I usually reboot my vms as they have still the "old" hostname "minimal" from the nixos-anywhere deployment, after that reboot the new hostname will be used.
 
 `colmena exec --on {{host}} -- sudo reboot`
+
+## Updates via colmena
+
+If I need to change settings, add new services to a vm I just change the configuration.nix or add a new module and import it and run
+
+`colmena apply` for all hosts
+
+`colmena apply --on {{host}}` on a specific host
+
+`colmena apply --on @{{tag}}` or on a tag / group of vms
+
+## Summary
+
+This is how I manage my homelab declaratively with opentofu and nixos.
 
 Just show me the [code](https://github.com/Mozart409/pve-nixos-homelab)
