@@ -1,2 +1,229 @@
 @import "tailwindcss";
 @source "../templates/**/*.html";
+
+@theme {
+  --font-sans: "DM Mono", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: "DM Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  
+  /* Prose theme variables */
+  --tw-prose-body: #374151;
+  --tw-prose-headings: #111827;
+  --tw-prose-lead: #4b5563;
+  --tw-prose-links: #f97316;
+  --tw-prose-bold: #111827;
+  --tw-prose-counters: #6b7280;
+  --tw-prose-bullets: #d1d5db;
+  --tw-prose-hr: #e5e7eb;
+  --tw-prose-quotes: #111827;
+  --tw-prose-quote-borders: #e5e7eb;
+  --tw-prose-captions: #6b7280;
+  --tw-prose-code: #111827;
+  --tw-prose-pre-code: #e5e7eb;
+  --tw-prose-pre-bg: #1f2937;
+  --tw-prose-th-borders: #d1d5db;
+  --tw-prose-td-borders: #e5e7eb;
+}
+
+/* Prose base styles */
+@utility prose {
+  color: var(--tw-prose-body);
+  max-width: 65ch;
+  
+  & p {
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+  }
+  
+  & [class~="lead"] {
+    color: var(--tw-prose-lead);
+    font-size: 1.25em;
+    line-height: 1.6;
+    margin-top: 1.2em;
+    margin-bottom: 1.2em;
+  }
+  
+  & a {
+    color: var(--tw-prose-links);
+    text-decoration: underline;
+    font-weight: 500;
+  }
+  
+  & strong {
+    color: var(--tw-prose-bold);
+    font-weight: 600;
+  }
+  
+  & ol {
+    list-style-type: decimal;
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+    padding-left: 1.625em;
+  }
+  
+  & ul {
+    list-style-type: disc;
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+    padding-left: 1.625em;
+  }
+  
+  & li {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+  
+  & h1 {
+    color: var(--tw-prose-headings);
+    font-weight: 800;
+    font-size: 2.25em;
+    margin-top: 0;
+    margin-bottom: 0.8888889em;
+    line-height: 1.1111111;
+  }
+  
+  & h2 {
+    color: var(--tw-prose-headings);
+    font-weight: 700;
+    font-size: 1.5em;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    line-height: 1.3333333;
+  }
+  
+  & h3 {
+    color: var(--tw-prose-headings);
+    font-weight: 600;
+    font-size: 1.25em;
+    margin-top: 1.6em;
+    margin-bottom: 0.6em;
+    line-height: 1.6;
+  }
+  
+  & h4 {
+    color: var(--tw-prose-headings);
+    font-weight: 600;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    line-height: 1.5;
+  }
+  
+  & blockquote {
+    font-weight: 500;
+    font-style: italic;
+    color: var(--tw-prose-quotes);
+    border-left-width: 0.25rem;
+    border-left-color: var(--tw-prose-quote-borders);
+    quotes: "\201C""\201D""\2018""\2019";
+    margin-top: 1.6em;
+    margin-bottom: 1.6em;
+    padding-left: 1em;
+  }
+  
+  & code {
+    color: var(--tw-prose-code);
+    font-weight: 600;
+    font-size: 0.875em;
+  }
+  
+  & pre {
+    color: var(--tw-prose-pre-code);
+    background-color: var(--tw-prose-pre-bg);
+    overflow-x: auto;
+    font-weight: 400;
+    font-size: 0.875em;
+    line-height: 1.7142857;
+    margin-top: 1.7142857em;
+    margin-bottom: 1.7142857em;
+    border-radius: 0.375rem;
+    padding: 0.8571429em 1.1428571em;
+  }
+  
+  & hr {
+    border-color: var(--tw-prose-hr);
+    border-top-width: 1px;
+    margin-top: 3em;
+    margin-bottom: 3em;
+  }
+  
+  & table {
+    width: 100%;
+    table-layout: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+  
+  & thead {
+    border-bottom-width: 1px;
+    border-bottom-color: var(--tw-prose-th-borders);
+  }
+  
+  & th {
+    color: var(--tw-prose-headings);
+    font-weight: 600;
+    text-align: left;
+    padding-right: 0.5714286em;
+    padding-bottom: 0.5714286em;
+    padding-left: 0.5714286em;
+  }
+  
+  & td {
+    padding-top: 0.5714286em;
+    padding-right: 0.5714286em;
+    padding-bottom: 0.5714286em;
+    padding-left: 0.5714286em;
+    border-bottom-width: 1px;
+    border-bottom-color: var(--tw-prose-td-borders);
+  }
+  
+  & img {
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+  
+  & > :first-child {
+    margin-top: 0;
+  }
+  
+  & > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Prose size variants */
+@utility prose-sm {
+  font-size: 0.875rem;
+  line-height: 1.7142857;
+  
+  & p { margin-top: 1.1428571em; margin-bottom: 1.1428571em; }
+  & h1 { font-size: 2.1428571em; margin-top: 0; margin-bottom: 1.1428571em; }
+  & h2 { font-size: 1.4285714em; margin-top: 2em; margin-bottom: 1em; }
+  & h3 { font-size: 1.2857143em; margin-top: 1.5555556em; margin-bottom: 0.4444444em; }
+}
+
+@utility prose-lg {
+  font-size: 1.125rem;
+  line-height: 1.7777778;
+  
+  & p { margin-top: 1.3333333em; margin-bottom: 1.3333333em; }
+  & h1 { font-size: 2.6666667em; margin-top: 0; margin-bottom: 0.8333333em; }
+  & h2 { font-size: 1.6666667em; margin-top: 1.8666667em; margin-bottom: 1.0666667em; }
+  & h3 { font-size: 1.3333333em; margin-top: 1.6666667em; margin-bottom: 0.6666667em; }
+}
+
+/* Prose invert (dark mode) */
+@utility prose-invert {
+  --tw-prose-body: #d1d5db;
+  --tw-prose-headings: #ffffff;
+  --tw-prose-lead: #9ca3af;
+  --tw-prose-links: #fb923c;
+  --tw-prose-bold: #ffffff;
+  --tw-prose-counters: #9ca3af;
+  --tw-prose-bullets: #4b5563;
+  --tw-prose-hr: #374151;
+  --tw-prose-quotes: #f3f4f6;
+  --tw-prose-quote-borders: #374151;
+  --tw-prose-captions: #9ca3af;
+  --tw-prose-code: #ffffff;
+  --tw-prose-pre-code: #d1d5db;
+  --tw-prose-pre-bg: rgb(0 0 0 / 50%);
+}
