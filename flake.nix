@@ -41,6 +41,7 @@
       ];
 
       linuxPackages = with pkgs; [
+        opencode
       ];
 
       darwinPackages = with pkgs; [

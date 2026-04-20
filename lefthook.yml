@@ -1,0 +1,10 @@
+pre-commit:
+  parallel: true
+  jobs:
+    - name: just format
+      glob: "justfile"
+      run: just --fmt
+      stage_fixed: true
+    - name: css-build
+      run: just css
+      stage_fixed: true
