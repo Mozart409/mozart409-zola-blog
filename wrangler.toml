@@ -1,0 +1,16 @@
+name = "mozart409-zola-blog"
+compatibility_date = "2025-01-19"
+
+[site]
+bucket = "./blog/public"
+
+[build]
+command = "zola build"
+build_output_directory = "public"
+root_directory = "blog"
+
+[build.environment]
+ZOLA_VERSION = "0.22.1"
+
+[build_config]
+build_system = "1"
