@@ -1,4 +1,9 @@
 {% extends "base.html" %} {% block content %}
-<h1 class="title">This is my blog made with Zola.</h1>
-<p><a href="{{ get_url(path='@/blog/_index.md') }}">Posts</a>.</p>
+<div class="text-center py-16">
+  <h1 class="text-5xl font-bold text-white mb-6">Welcome to Mozart409 Blog</h1>
+  <p class="text-xl text-gray-400 mb-8">A blog about technology, code, and everything in between.</p>
+  <a href="{{ get_url(path='@/_index.md') }}" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
+    Browse Posts
+  </a>
+</div>
 {% endblock content %}

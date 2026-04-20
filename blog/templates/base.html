@@ -2,14 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mozart409 Blog</title>
     <link rel="stylesheet" href="app.css" />
     <link rel="icon" href="https://fav.farm/%F0%9F%A5%91" />
   </head>
 
-  <body>
-    <section class="section">
-      <div class="container">{% block content %} {% endblock content %}</div>
-    </section>
+  <body class="bg-gray-900 text-gray-100 min-h-screen">
+    <nav class="border-b border-gray-800 bg-gray-950">
+      <div class="max-w-4xl mx-auto px-4 py-4">
+        <a href="/" class="text-xl font-bold text-white hover:text-blue-400 transition-colors">
+          Mozart409 Blog
+        </a>
+      </div>
+    </nav>
+    <main class="max-w-4xl mx-auto px-4 py-12">
+      {% block content %} {% endblock content %}
+    </main>
+    <footer class="border-t border-gray-800 bg-gray-950 mt-auto">
+      <div class="max-w-4xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+        &copy; {{ now() | date(format="%Y") }} Mozart409 Blog
+      </div>
+    </footer>
   </body>
 </html>
