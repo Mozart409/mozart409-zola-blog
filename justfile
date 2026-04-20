@@ -15,8 +15,8 @@ dev:
 
 [working-directory('blog/static')]
 css: clear
-    tailwindcss -i input.css -o app.css
+    tailwindcss -i input.css -o app.css --minify
 
 [working-directory('blog/static')]
 css-watch: clear
-    tailwindcss -i input.css -o app.css --watch
+    tailwindcss -i input.css -o app.css --watch --minify
