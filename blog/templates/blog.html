@@ -6,7 +6,7 @@
     <li class="group">
       <a href="{{ page.permalink | safe }}" class="block bg-gray-800 hover:bg-gray-750 border border-gray-700 rounded-lg p-6 transition-all duration-200 hover:border-gray-600">
         <h2 class="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors mb-2">{{ page.title }}</h2>
-        <p class="text-gray-400 text-sm">{{ page.date }}</p>
+        <p class="text-gray-400 text-sm">{{ page.date }} | reading_time  {{ page.reading_time }}min</p>
       </a>
     </li>
     {% endfor %}
