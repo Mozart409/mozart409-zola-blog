@@ -37,11 +37,7 @@
         keep-sorted
         lazydocker
         lefthook
-        ni
-        nodejs_25
-        playwright-driver.browsers
         tailwindcss_4
-        wrangler
         zola
         # keep-sorted end
       ];
@@ -61,10 +57,6 @@
           ++ pkgs.lib.optionals isLinux linuxPackages
           ++ pkgs.lib.optionals isDarwin darwinPackages;
         shellHook = ''
-          export COMPOSE_BAKE=true
-          export PLAYWRIGHT_BROWSERS_PATH=${pkgs.playwright-driver.browsers}
-          export PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=true
-
           lefthook install
           cog install-hook
         '';
