@@ -52,11 +52,11 @@ direnv allow
 
 ### Available Commands
 
-| Command | Description |
-|---------|-------------|
-| `just` | List all available tasks |
-| `just dev` | Start Zola development server |
-| `just css` | Build and minify CSS once |
+| Command          | Description                            |
+| ---------------- | -------------------------------------- |
+| `just`           | List all available tasks               |
+| `just dev`       | Start Zola development server          |
+| `just css`       | Build and minify CSS once              |
 | `just css-watch` | Watch CSS files and rebuild on changes |
 
 ## 📝 Creating Content
@@ -79,13 +79,6 @@ CSS is built using TailwindCSS. The input file is at `blog/static/input.css` and
 ## 🔄 Git Workflow
 
 The project uses:
+
 - **Cocogitto** for conventional commits (`feat:`, `fix:`, `docs:`, etc.)
 - **Lefthook** to run checks before commits
-
-## 📄 License
-
-This project is open source. See the repository for license details.
-
----
-
-Built with ❤️ using Zola and Nix
