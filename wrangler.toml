@@ -1,6 +1,6 @@
 name = "mozart409-zola-blog"
-compatibility_date = "2025-01-19"
-main = "workers-site/index.js"
+compatibility_date = "2026-01-22"
+
 
 preview_urls = true
 
@@ -8,11 +8,11 @@ preview_urls = true
 pattern = "blog.mozart409.com"
 custom_domain = true
 
-[site]
-bucket = "./blog/public"
-
 [build]
-command = "cd blog && curl -fsSL https://github.com/getzola/zola/releases/download/v0.22.1/zola-v0.22.1-x86_64-unknown-linux-gnu.tar.gz | tar xz && if [ -n \"${CF_PAGES_URL:-}\" ]; then ./zola build --base-url \"$CF_PAGES_URL\"; else ./zola build; fi"
+command = "./build.sh"
+
+[assets]
+directory = "./blog/public"
 
 
 [observability]
