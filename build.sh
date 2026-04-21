@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+set -euo pipefail
+
 main() {
   ZOLA_VERSION=0.22.1
 
@@ -7,7 +9,8 @@ main() {
 
   git submodule update --init --recursive
 
-  ./zola build
+  # Run zola from the blog directory where zola.toml is located
+  cd blog && ../zola build
 }
 
-set -euo pipefail
+main
