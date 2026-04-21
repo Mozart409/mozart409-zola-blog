@@ -2,11 +2,11 @@ name = "mozart409-zola-blog"
 compatibility_date = "2025-01-19"
 main = "workers-site/index.js"
 
+preview_urls = true
+
 [[routes]]
 pattern = "blog.mozart409.com"
 custom_domain = true
-
-preview_urls = true
 
 [site]
 bucket = "./blog/public"
