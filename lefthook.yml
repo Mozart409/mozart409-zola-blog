@@ -8,3 +8,6 @@ pre-commit:
     - name: css-build
       run: just css
       stage_fixed: true
+    - name: keep-sorted
+      run: keep-sorted {staged_files}
+      stage_fixed: true

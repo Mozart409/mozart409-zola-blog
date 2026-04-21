@@ -30,14 +30,19 @@
       isDarwin = pkgs.stdenv.isDarwin;
 
       commonPackages = with pkgs; [
+        # keep-sorted start
+        cocogitto
+        git
+        just
+        keep-sorted
         lazydocker
         lefthook
-        cocogitto
-        just
+        ni
+        nodejs_25
         playwright-driver.browsers
-        git
-        zola
         tailwindcss_4
+        zola
+        # keep-sorted end
       ];
 
       linuxPackages = with pkgs; [
