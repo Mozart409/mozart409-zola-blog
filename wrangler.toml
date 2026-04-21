@@ -2,6 +2,8 @@ name = "mozart409-zola-blog"
 compatibility_date = "2025-01-19"
 main = "workers-site/index.js"
 
+preview_urls = true
+
 [site]
 bucket = "./blog/public"
 
