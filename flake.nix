@@ -41,6 +41,7 @@
         nodejs_25
         playwright-driver.browsers
         tailwindcss_4
+        wrangler
         zola
         # keep-sorted end
       ];
