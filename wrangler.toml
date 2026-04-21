@@ -1,7 +1,5 @@
 name = "mozart409-zola-blog"
 compatibility_date = "2026-01-22"
-
-
 preview_urls = true
 
 [[routes]]
